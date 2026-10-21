@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="Tachkila.css">
 </head>
 <body class="overflow-hidden">
-    <header class=" bg-slate-700 flex justify-between align-center pt-3 pb-3 pl-5 pr-5 items-center border-b-1 border-gray-100">
+    <header class=" bg-slate-700 flex justify-between align-center pt-3 pb-3 pl-5 pr-5 items-center border-b-1 border-gray-100  ">
         <div class="flex gap-2 items-center">
         <img src="club.png" class="w-8" alt="Écusson Atlas FC Vert et Blanc"> 
         <h4 class="text-gray-100 font-medium text-xl">TACHKILA</h4>
@@ -29,7 +29,7 @@
             <button class="bg-green-700 w-85 m-2 mt-6 p-2 rounded-lg font-medium text-gray-50">+Ajouter un joueur</button>
             <div class="flex justify-between m-2 mt-7">
                 <p class="font-medium text-gray-50 ">Effectif</p>
-                <p class="bg-slate-400 pt-1 pb-1 pr-4 pl-4 rounded-lg font-medium ">1joueur(s)</p>
+                <p class="bg-slate-400 pt-1 pb-1 pr-4 pl-4 rounded-lg font-medium "><span>0 </span>joueur(s)</p>
             </div >
             <p class="m-3 font-base text-slate-400 ">Cliquez sur un joueur placé pour voir sa case sur le terrain.<span class="text-orange-600"><i class="fa-solid fa-pen"></i></span>pour modifier,<span class="text-black"><i class="fa-solid fa-trash-can"></i></span>pour supprimer</p>
             <div class="m-2 border-1 p-2 border-l-4 border-orange-600 rounded-lg">
@@ -65,9 +65,49 @@
                 </select>
                 </div>
             </div>
+            <div class="absolute top-40 left-60 bg-slate-700 w-96 rounded-lg h-90 ">
+                <form>
+                    <div class="flex justify-between">
+                        <p>Ajouter un joueur</p>
+                        <i class="fa-solid fa-x"></i>
+                    </div>
+                
+                    <label for=""  class="text-gray-400 font-medium">Nom complet</label>
+                    <br>
+                    <input type="text" placeholder=" Ex. Ayoub Mansouri" class="w-70 h-8 rounded-lg  bg-slate-300 border-1">
+                    <p class="text-gray-400 font-medium">Poste</p>
+                    <div class="flex gap-6 flex-wrap">
+                        <div>
+                            <input type="radio" name="brand"  id=""> 
+                            <label for=""><span>.</span>Gardien</label>   
+                        </div>
+                        <div>
+                            <input type="radio"  name="brand"  id=""> 
+                            <label for=""><span>.</span>Défeneur</label>    
+                        </div>
+                        <div>
+                            <input type="radio"  name="brand"  id="">
+                            <label for=""><span>.</span>Milieau</label>   
+                        </div>
+                        <div>
+                            <input type="radio" name="brand"  id="">
+                            <label for=""><span>.</span>Attaquant</label>     
+                        </div>
+                   
+                    </div>
+                    <p>Numéro(1à99)</p>
+                    <input type="number">
+                    <div>
+                        <button>Annuler</button>
+                        <button>Ajouter</button>
+                    </div>
+
+                    
+            </form>
+            </div>
         </aside>
-        <section class="bg-slate-950 w-dvw">
-            <div class="terrain">
+        <section class="bg-slate-950 min-w-228 ">
+            <div class="terrain ">
                 <div class="position-joueur">
                     <div class="GB border-2 border-dashed border-orange-500 rounded-full bg-orange-500/30 flex"><span class="self-center">GB</span></div>
                     <div class="DG border-2 border-dashed border-blue-500 rounded-lg bg-blue-500/30  ">DG</div>
@@ -80,7 +120,6 @@
                     <div class="MD border-2 border-dashed border-green-500 rounded-lg bg-green-500/30">MD</div>
                     <div class="BU1 border-2 border-dashed border-red-500 rounded-lg bg-red-500/30">BU</div>
                     <div class="BU2 border-2 border-dashed border-red-500 rounded-lg bg-red-500/30">BU</div>
-                    
                 </div>
             </div>
         </section>
