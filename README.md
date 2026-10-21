@@ -12,7 +12,7 @@ TACHKILA est une application web qui permet d'organiser l'effectif d'une équipe
 
 ## Technologies utilisées
 
-- **HTML5** : structure de la page.
+- **HTML5** :structure de la page.
 - **CSS3** : mise en forme et design.
 - **JavaScript** : interactions et gestion des joueurs.
 - **CSS Grid** : organisation des positions sur le terrain.
