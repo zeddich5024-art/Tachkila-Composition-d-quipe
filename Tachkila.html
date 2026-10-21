@@ -6,8 +6,9 @@
     <title>TACHKILA</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="Tachkila.css">
 </head>
-<body>
+<body class="overflow-hidden">
     <header class=" bg-slate-700 flex justify-between align-center pt-3 pb-3 pl-5 pr-5 items-center border-b-1 border-gray-100">
         <div class="flex gap-2 items-center">
         <img src="club.png" class="w-8" alt="Écusson Atlas FC Vert et Blanc"> 
@@ -23,10 +24,63 @@
         </nav>
         <p class="text-sm text-gray-500 font-medium ">Schéma <span class="bg-slate-900 pr-2 pl-2 pt-1 pb-1 text-gray-100 rounded-lg shadow-xl border border-gray-500"> 4-4-2</span></p>
     </header>
-    <main >
-        <aside>
+    <main class="flex">
+        <aside class="bg-slate-700 w-90 h-133 border-r-1 border-gray-100">
+            <button class="bg-green-700 w-85 m-2 mt-6 p-2 rounded-lg font-medium text-gray-50">+Ajouter un joueur</button>
+            <div class="flex justify-between m-2 mt-7">
+                <p class="font-medium text-gray-50 ">Effectif</p>
+                <p class="bg-slate-400 pt-1 pb-1 pr-4 pl-4 rounded-lg font-medium ">1joueur(s)</p>
+            </div >
+            <p class="m-3 font-base text-slate-400 ">Cliquez sur un joueur placé pour voir sa case sur le terrain.<span class="text-orange-600"><i class="fa-solid fa-pen"></i></span>pour modifier,<span class="text-black"><i class="fa-solid fa-trash-can"></i></span>pour supprimer</p>
+            <div class="m-2 border-1 p-2 border-l-4 border-orange-600 rounded-lg">
+                <div class="flex gap-5 justify-between">
+                    <div class="flex gap-5">
+                    <p class="bg-slate-900 text-orange-600 border-1 border-orange-600 pr-5 pl-5 pt-3 pb-3 rounded-full  font-medium ">1</p>
+                    <div>
+                        <p class="font-medium text-gray-50">bono </p>
+                        <p class="font-medium text-orange-600">Gardien</p>
+                    </div>
+                </div>
+                <div>
+                    <span class="text-orange-600"><i class="fa-solid fa-pen"></i></span>
+                    <span class="text-black"><i class="fa-solid fa-trash-can"></i></span>
+                </div>
+                </div>
 
+                <select name="" id="" class="w-70 h-10 border-1 border-slate-500 rounded-lg overflow-scroll shadow-md  ml-4 mt-5">
+                    <option value="">Sur le banc</option>
+                    <option value="GB">GB-Gardien</option>
+                    <option value="DG">DG-Défenseur gauche</option>
+                    <option value="DC">DC-Défenseur central 1</option>
+                    <option value="DC">DC-Défenseur central 2</option>
+                    <option value="DD">DD-Défenseur droit</option>
+                    <option value="MG">MG-Milieu gauche</option>
+                    <option value="MC">MC-Milieu central 1</option>
+                    <option value="MC">MC-Milieu central 2</option>
+                    <option value="MD">MD-Milieu droit</option>
+                    <option value="BU">BU-Buteur 1</option>
+                    <option value="BU">BU-Buteur 2</option>
+                </select>
+            </div>
         </aside>
+        <section class="bg-slate-950 w-dvw">
+            <div class="terrain">
+                <div class="position-joueur">
+                    <div class="GB border-2 border-dashed border-orange-500 rounded-full bg-orange-500/30 flex"><span class="self-center">GB</span></div>
+                    <div class="DG border-2 border-dashed border-blue-500 rounded-lg bg-blue-500/30  ">DG</div>
+                    <div class="DC1 border-2 border-dashed border-blue-500 rounded-lg bg-blue-500/30 ">DC</div>
+                    <div class="DC2 border-2 border-dashed border-blue-500 rounded-lg bg-blue-500/30  ">DC</div>
+                    <div class="DD border-2 border-dashed border-blue-500 rounded-lg bg-blue-500/30 ">DD</div>
+                    <div class="MG border-2 border-dashed border-green-500 rounded-lg bg-green-500/30 ">MG</div>
+                    <div class="MC1 border-2 border-dashed border-green-500 rounded-lg bg-green-500/30">MC</div>
+                    <div class="MC2 border-2 border-dashed border-green-500 rounded-lg bg-green-500/30">MC</div>
+                    <div class="MD border-2 border-dashed border-green-500 rounded-lg bg-green-500/30">MD</div>
+                    <div class="BU1 border-2 border-dashed border-red-500 rounded-lg bg-red-500/30">BU</div>
+                    <div class="BU2 border-2 border-dashed border-red-500 rounded-lg bg-red-500/30">BU</div>
+                    
+                </div>
+            </div>
+        </section>
     </main>
 </body>
 </html>
