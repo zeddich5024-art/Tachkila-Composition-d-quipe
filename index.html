@@ -65,41 +65,42 @@
                 </select>
                 </div>
             </div>
-            <div class="absolute top-40 left-60 bg-slate-700 w-96 rounded-lg h-90 ">
+            <div class="absolute top-40 left-90 bg-slate-700 w-96 rounded-lg h-95 p-6">
                 <form>
                     <div class="flex justify-between">
-                        <p>Ajouter un joueur</p>
-                        <i class="fa-solid fa-x"></i>
+                        <p class="text-gray-100 font-medium ">Ajouter un joueur</p>
+                        <i class="fa-solid fa-x text-sm text-gray-400"></i>
                     </div>
-                
-                    <label for=""  class="text-gray-400 font-medium">Nom complet</label>
-                    <br>
-                    <input type="text" required placeholder=" Ex. Ayoub Mansouri" class="w-70 h-8 rounded-lg  bg-slate-300 border-1">
-                    <p class="text-gray-400 font-medium">Poste</p>
-                    <div class="flex gap-6 flex-wrap">
+                    <div class="mt-2 mb-4">
+                        <label for=""  class="text-gray-400 font-medium text-sm">Nom complet</label>
+                        <br>
+                        <input type="text" required placeholder=" Ex. Ayoub Mansouri" class="w-70 h-8 rounded-lg text-gray-100 text-base font-normal bg-slate-900 border-1">
+                    </div>
+                    <p class="text-gray-400 font-medium text-sm">Poste</p>
+                    <div class="flex gap-6 flex-wrap mt-2 mb-4">
                         <div>
-                            <input type="radio" name="brand"  id=""> 
-                            <label for=""><span>.</span>Gardien</label>   
+                            <input type="radio" name="brand"  id="br" class="hidden "> 
+                            <label for="br" class="bg-slate-900 p-1 pl-3 pr-17 rounded-lg border-1 border-gray-400 text-gray-100 "><span class=" text-orange-500 relative">.</span>Gardien</label>   
                         </div>
                         <div>
-                            <input type="radio"  name="brand"  id=""> 
-                            <label for=""><span>.</span>Défeneur</label>    
+                            <input type="radio"  name="brand"  id="Dé" class="hidden"> 
+                            <label for="Dé" class="bg-slate-900 p-1 pl-3 pr-17 rounded-lg border-1 border-gray-400 text-gray-100 "><span class="text-blue-500">.</span>Défeneur</label>    
                         </div>
                         <div>
-                            <input type="radio"  name="brand"  id="">
-                            <label for=""><span>.</span>Milieau</label>   
+                            <input type="radio"  name="brand"  id="Mi" class="hidden">
+                            <label for="Mi" class="bg-slate-900 p-1 pl-3 pr-17 rounded-lg border-1 border-gray-400 text-gray-100 "><span class="text-green-500">.</span>Milieau</label>   
                         </div>
                         <div>
-                            <input type="radio" name="brand"  id="">
-                            <label for=""><span>.</span>Attaquant</label>     
+                            <input type="radio" name="brand"  id="Att" class="hidden">
+                            <label for="Att" class="bg-slate-900 p-1 pl-3 pr-17 rounded-lg border-1 border-gray-400 text-gray-100 "><span class="text-red-500">.</span>Attaquant</label>     
                         </div>
                    
                     </div>
-                    <p>Numéro(1à99)</p>
-                    <input type="number" min="1" max="99" required class="w-70 h-8 rounded-lg  bg-slate-300 border-1">
-                    <div>
-                        <button class="bg-slate-400 rounded-lg w-20">Annuler</button>
-                        <button class="bg-lime-500 rounded-lg w-20">Ajouter</button>
+                    <p class="text-gray-400 font-medium text-sm mb-3">Numéro(1à99)</p>
+                    <input type="number" min="1" max="99" required class="w-70 h-8 rounded-lg text-gray-100 text-base font-normal bg-slate-900 border-1">
+                    <div class="absolute right-4 bottom-4">
+                        <button class="bg-slate-400 rounded-lg w-20 border-1 border-gray-200 p-1">Annuler</button>
+                        <button class="bg-green-500 rounded-lg w-20 p-1 border-1 border-gray-200">Ajouter</button>
                     </div>
 
                     
