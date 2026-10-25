@@ -68,8 +68,6 @@ formJoueur.addEventListener("submit", (event) => {
         return;
     }
     
-    const messageVide=document.querySelector("#message-vide");
-    const nombreJoueurs=document.querySelector("#nombre-joueurs");
     const numeroExiste=joueurs.some((joueur)=>joueur.numero===numero);
     if(numeroExiste){
         alert("Ce numéro est déjà utilisé!:")
@@ -91,8 +89,11 @@ formJoueur.addEventListener("submit", (event) => {
     form.classList.add("hidden");
 });
 const liste=document.querySelector("#liste-joueurs");
+const messageVide=document.querySelector("#message-vide");
+const nombreJoueurs=document.querySelector("#nombre-joueurs");
 // Afficher les joueurs
 function afficherJoueurs() {
+    
     liste.innerHTML=" ";
     joueurs.forEach((joueur) => {
         const carte = document.createElement("div");
@@ -126,9 +127,18 @@ function afficherJoueurs() {
         btnModifier.title ="Modifier";
 
         const btnSupprimer =document.createElement("button");
-        btnSupprimer.className ="text-black  hover:text-red-700";
+        btnSupprimer.className ="text-black  hover:text-red-700 cursor-pointer";
         btnSupprimer.innerHTML =`<i class="fa-solid fa-trash"></i>`;
         btnSupprimer.title ="Supprimer";
+        //Supprimier carte joueur
+        btnSupprimer.addEventListener("click",()=>{
+            const index=joueurs.indexOf(joueur);
+            joueurs.splice(index,1);
+            carte.remove();
+            console.log(joueurs.length)
+            nombreJoueurs.textContent=joueurs.length;
+            messageVide.classList.toggle("hidden",joueurs.length>0);
+        })
         // select
         const listposition=document.createElement("select");
         listposition.className=" w-70 border-1 border-gray-500 shadow-xl/30 bg-gray-400/8 h-8 mt-4 rounded-lg";
@@ -154,4 +164,6 @@ function afficherJoueurs() {
         carte.append(ligne,listposition);
         liste.append(carte);
     });
+    nombreJoueurs.textContent=joueurs.length;
+    messageVide.classList.toggle("hidden",joueurs.length>0);
 }
