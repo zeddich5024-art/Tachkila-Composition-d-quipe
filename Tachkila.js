@@ -73,7 +73,7 @@ formJoueur.addEventListener("submit", (event) => {
         alert("Ce numéro est déjà utilisé!:")
         return;
     }
-
+      
     const nouveauJoueur = {
         id: idjoueur,
         nom: nom,
@@ -91,6 +91,14 @@ formJoueur.addEventListener("submit", (event) => {
 const liste=document.querySelector("#liste-joueurs");
 const messageVide=document.querySelector("#message-vide");
 const nombreJoueurs=document.querySelector("#nombre-joueurs");
+
+const containerModifier = document.querySelector("#containerModifier");
+const formModifier = document.querySelector("#formModifier");
+const nomModifier = document.querySelector("#nomModifier");
+const numeroModifier = document.querySelector("#numeroModifier");
+const btnAnnuler = document.querySelector("#btnAnnuler");
+
+let joueurModifier=null;
 // Afficher les joueurs
 function afficherJoueurs() {
     
@@ -122,10 +130,20 @@ function afficherJoueurs() {
         actions.className ="flex gap-3 items-start";
 
         const btnModifier =document.createElement("button");
-        btnModifier.className ="text-orange-600 hover:text-blue-600";
+        btnModifier.className ="text-orange-600 hover:text-blue-600 cursor-pointer";
         btnModifier.innerHTML ='<i class="fa-solid fa-pen"></i>';
         btnModifier.title ="Modifier";
-
+        btnModifier.addEventListener("click",()=>{
+            joueurModifier = joueur;
+            nomModifier.value = joueur.nom;
+            numeroModifier.value = joueur.numero;
+            document.querySelector(`input[name="posteModifier"][value="${joueur.poste}"]`).checked = true;
+            containerModifier.classList.remove("hidden");
+        });
+        btnAnnuler.addEventListener("click", () => {
+            containerModifier.classList.add("hidden");
+            joueurModifier = null;
+        });
         const btnSupprimer =document.createElement("button");
         btnSupprimer.className ="text-black  hover:text-red-700 cursor-pointer";
         btnSupprimer.innerHTML =`<i class="fa-solid fa-trash"></i>`;
@@ -167,3 +185,28 @@ function afficherJoueurs() {
     nombreJoueurs.textContent=joueurs.length;
     messageVide.classList.toggle("hidden",joueurs.length>0);
 }
+formModifier.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (joueurModifier === null) return;
+    const nom = nomModifier.value.trim();
+    const numero = Number(numeroModifier.value);
+    const poste = document.querySelector('input[name="posteModifier"]:checked');
+    if (nom.length < 3 || !poste || numero < 1 || numero > 99) {
+        console.log("jfido")
+        alert("Veuillez vérifier les informations.");
+        return;
+    }
+    const numeroExiste = joueurs.some(
+        j => j.numero === numero && j.id !== joueurModifier.id
+    );
+    if (numeroExiste) {
+        alert("Ce numéro est déjà utilisé !");
+        return;
+    }
+    joueurModifier.nom = nom;
+    joueurModifier.numero = numero;
+    joueurModifier.poste = poste.value;
+    containerModifier.classList.add("hidden");
+    joueurModifier = null;
+    afficherJoueurs();
+});
