@@ -58,11 +58,9 @@ formJoueur.addEventListener("submit", (event) => {
     if(!posteJoueur){
         errorPoste.textContent ="Veuillez choisir un poste";
         valide=false;
-        console.log("eeee")
     }
     else{
         errorPoste.textContent="";
-        console.log("RRR")
     }
     if (!valide) {
         return;
@@ -79,6 +77,7 @@ formJoueur.addEventListener("submit", (event) => {
         nom: nom,
         poste: posteJoueur.value,
         numero: numero,
+        position:""
     };
     
     joueurs.push(nouveauJoueur);
@@ -164,17 +163,43 @@ function afficherJoueurs() {
             <option value="banc">Sur le banc</option>
             <option value="GB">GB-Gardien</option>
             <option value="DG">DG-Défenseur gauche</option>
-            <option value="DC">DC-Défenseur central 1</option>
-            <option value="DC">DC-Défenseur central 2</option>
+            <option value="DC1">DC-Défenseur central 1</option>
+            <option value="DC2">DC-Défenseur central 2</option>
             <option value="DD">DD-Défenseur droit</option>
             <option value="MG">MG-Milieu gauche</option>
-            <option value="MC">MC-Milieu central 1</option>
-            <option value="MC">MC-Milieu central 2</option>
+            <option value="MC1">MC-Milieu central 1</option>
+            <option value="MC2">MC-Milieu central 2</option>
             <option value="MD">MD-Milieu droit</option>
             <option value="BU">BU-Buteur 1</option>
             <option value="BU">BU-Buteur 2</option>
                 `;
+        listposition.value=joueur.position || "banc";
+        listposition.addEventListener("change",()=>{
+            const nouvellePosition =listposition.value;
+            const postesAutorises={
+                Gardien:["GB"],
+                Défenseur:["DG", "DC1","DC2","DD"],
+                Milieu:["MG", "MC1", "MC2","MD"],
+                Attaquant:["BU1","BU2"]
+            };
+            if(nouvellePosition !== "banc" && !postesAutorises[joueur.poste]?.includes(nouvellePosition)){
+                alert("Ce poste ne correspond pas au joueur !");
+                listposition.value=joueur.position || "banc";
+                return;
+            }
+            const positionOccupee =joueurs.some(autreJoueur => 
+                autreJoueur .id !== joueur.id && autreJoueur.position == nouvellePosition && nouvellePosition !== "banc"
+            )
+            if(positionOccupee){
+                alert("Ce poste est déjaà occupé !")
+                listposition.value=joueur.position || "banc";
+                return;
+            }
+            joueur.position = nouvellePosition;
 
+            afficherTerrain();
+            console.log(joueur)
+        })
         details.append(nom, poste);
         informations.append(numero, details);
         actions.append(btnModifier, btnSupprimer);
@@ -210,3 +235,34 @@ formModifier.addEventListener("submit", (e) => {
     joueurModifier = null;
     afficherJoueurs();
 });
+
+
+function afficherTerrain(){
+    const positions=["GB","DG","DC1","DC2","DD","MG","MC1","MC2","MD","BU1","BU2"];
+    positions.forEach(position =>{
+        const caseTerrain=document.querySelector(`.position-joueur .${position}`);
+        if(!caseTerrain){
+            console.error("Centre introuvable:",position);
+            return
+        }
+        const joueur =joueurs.find(joueur => joueur.position === position);
+        if(joueur){
+            caseTerrain.textContent =`${position}\n${joueur.nom} (#${joueur.numero})`;
+            console.log("333")
+        }
+        else{
+            const noms={
+                DC1: "DC",
+                DC2: "DC",
+                MC1: "MC",
+                MC2: "MC",
+                BU1:"BU",
+                BU2: "BU"
+            };
+            caseTerrain.textContent = noms[position] || position;
+        }
+    });
+}
+
+afficherTerrain()
+
