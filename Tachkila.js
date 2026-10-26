@@ -137,7 +137,7 @@ function afficherJoueurs() {
             joueurModifier = joueur;
             nomModifier.value = joueur.nom;
             numeroModifier.value = joueur.numero;
-            document.querySelector(`input[name="posteModifier"][value="${joueur.poste}"]`).checked = true;
+            document.querySelector(`input[name="poste"][value="${joueur.poste}"]`).checked = true;
             containerModifier.classList.remove("hidden");
         });
         btnAnnuler.addEventListener("click", () => {
@@ -190,14 +190,14 @@ formModifier.addEventListener("submit", (e) => {
     if (joueurModifier === null) return;
     const nom = nomModifier.value.trim();
     const numero = Number(numeroModifier.value);
-    const poste = document.querySelector('input[name="posteModifier"]:checked');
+    const poste = document.querySelector('input[name="poste"]:checked');
     if (nom.length < 3 || !poste || numero < 1 || numero > 99) {
         console.log("jfido")
         alert("Veuillez vérifier les informations.");
         return;
     }
     const numeroExiste = joueurs.some(
-        j => j.numero === numero && j.id !== joueurModifier.id
+        joueur => joueur.numero === numero && joueur.id !== joueurModifier.id
     );
     if (numeroExiste) {
         alert("Ce numéro est déjà utilisé !");
@@ -205,7 +205,7 @@ formModifier.addEventListener("submit", (e) => {
     }
     joueurModifier.nom = nom;
     joueurModifier.numero = numero;
-    joueurModifier.poste = poste.value;
+    joueurModifier.poste = poste.value.trim();
     containerModifier.classList.add("hidden");
     joueurModifier = null;
     afficherJoueurs();
