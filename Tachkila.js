@@ -173,8 +173,8 @@ function afficherJoueurs() {
             <option value="MC1">MC-Milieu central 1</option>
             <option value="MC2">MC-Milieu central 2</option>
             <option value="MD">MD-Milieu droit</option>
-            <option value="BU">BU-Buteur 1</option>
-            <option value="BU">BU-Buteur 2</option>
+            <option value="BU1">BU-Buteur 1</option>
+            <option value="BU2">BU-Buteur 2</option>
                 `;
         listposition.value=joueur.position || "banc";
         listposition.addEventListener("change",()=>{
@@ -199,7 +199,7 @@ function afficherJoueurs() {
                 return;
             }
             joueur.position = nouvellePosition;
-            localStorage.setItem("joueurs",JSOM.stringify(joueurs));
+            localStorage.setItem("joueurs",JSON.stringify(joueurs));
 
             afficherTerrain();
             compterJoueursTerrain();
@@ -253,8 +253,8 @@ function afficherTerrain(){
         }
         const joueur =joueurs.find(joueur => joueur.position === position);
         if(joueur){
-            caseTerrain.textContent =`${position}\n${joueur.nom} (#${joueur.numero})`;
-            console.log("333")
+            caseTerrain.textContent =`${position}\n${joueur.nom} (${joueur.numero})`;
+            
         }
         else{
             const noms={
@@ -274,6 +274,8 @@ const nombreTerrain=document.querySelector("#nombre-terrain");
 function compterJoueursTerrain(){
     const total=joueurs.filter(joueur=>joueur.position !== "banc" && joueur.position !=="").length;
     nombreTerrain.textContent=total;
+    localStorage.setItem("joueurs",JSON.stringify(joueurs));
 }
+compterJoueursTerrain()
 afficherJoueurs()
 afficherTerrain()
