@@ -15,8 +15,8 @@
 }
 .position-joueur{
     display:grid;
-    grid-template-columns: repeat(12,1fr);
-    grid-template-rows:repeat(9,1fr) ;   
+    grid-template-columns: repeat(12,minmax(0,1fr));
+    grid-template-rows:repeat(9,minmax(0,1fr)) ;   
     height: 100%; 
     gap: 10px;
     padding: 20px;
@@ -66,6 +66,32 @@
     grid-row:7/8;
 }
 
+.position-joueur >div{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    padding: 3px;
+    gap:3px;
+}
+.numero-terrain{
+    font-weight:bold;
+    font-size:14px;
+    color: white;
+}
+.poste-terrain{
+    font-size: 12px;
+    font-weight: bold;
+    color: #fdba74;
+}
+.nom-terrain{
+    font-size:12px;
+    overflow-wrap: anywhere;
+    color:white;
+}
 
 
 

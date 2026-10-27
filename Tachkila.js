@@ -258,7 +258,19 @@ function afficherTerrain(){
         }
         const joueur =joueurs.find(joueur => joueur.position === position);
         if(joueur){
-            caseTerrain.textContent =`${position}\n${joueur.nom} (${joueur.numero})`;
+            caseTerrain.innerHTML="";
+
+            const numero =document.createElement("span");
+            numero.className="numero-terrain";
+            numero.textContent=`#${joueur.numero}`;
+            const poste=document.createElement("span");
+            poste.className="poste-terrain"
+            poste.textContent=position;
+            const nom=document.createElement("span");
+            nom.className="nom-terrain";
+            nom.textContent=joueur.nom;
+
+            caseTerrain.append(numero,poste,nom);
             
         }
         else{
