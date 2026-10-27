@@ -198,6 +198,7 @@ function afficherJoueurs() {
             joueur.position = nouvellePosition;
 
             afficherTerrain();
+            compterJoueursTerrain();
             console.log(joueur)
         })
         details.append(nom, poste);
@@ -265,4 +266,9 @@ function afficherTerrain(){
 }
 
 afficherTerrain()
+const nombreTerrain=document.querySelector("#nombre-terrain");
+function compterJoueursTerrain(){
+    const total=joueurs.filter(joueur=>joueur.position !== "banc" && joueur.position !=="").length;
+    nombreTerrain.textContent=total;
+}
 
