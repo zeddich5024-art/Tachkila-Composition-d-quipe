@@ -9,25 +9,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="Tachkila.css">
 </head>
-<body class="overflow-hidden">
-    <header class=" bg-slate-700 flex justify-between align-center pt-3 pb-3 pl-5 pr-5 items-center border-b-1 border-gray-100  ">
+<body class=" overflow-hidden">
+    <header class=" bg-slate-700 flex justify-between align-center pt-3 pb-3 pl-5 pr-5 items-center border-b-1 border-gray-100 relative right-0 left-0 z-10 ">
         <div class="flex gap-2 items-center">
         <img src="club.png" class="w-8" alt="Écusson Atlas FC Vert et Blanc"> 
         <h4 class="text-gray-100 font-medium text-xl">TACHKILA</h4>
         </div>
-        <nav>
-            <ul class="flex list-disc gap-10 text-xl font-medium items-end ">
+        <nav id="navposte">
+            <ul class="flex list-disc gap-10 text-xl font-medium items-end " id="navposte">
                 <li class="text-orange-500 "><span class="text-base ">GB</span></li>
                 <li class="text-blue-500"><span class="text-base">DEF</span></li>
                 <li class="text-green-500"><span class="text-base">MIL</span></li>
                 <li class="text-red-500"><span class="text-base ">ATT</span></li>
             </ul>
         </nav>
-        <p class="text-sm text-gray-500 font-medium ">Schéma <span class="bg-slate-900 pr-2 pl-2 pt-1 pb-1 text-gray-100 rounded-lg shadow-xl border border-gray-500"> 4-4-2</span></p>
+        <p class="text-sm text-gray-500 font-medium " id="schéma">Schéma <span class="bg-slate-900 pr-2 pl-2 pt-1 pb-1 text-gray-100 rounded-lg shadow-xl border border-gray-500"> 4-4-2</span></p>
     </header>
-    <main class="flex">
-        <aside class="bg-slate-700 w-90 h-133 border-r-1 border-gray-100">
-            <button class="ajouter cursor-pointer bg-green-700 w-85 m-2 mt-6 p-2 rounded-lg font-medium text-gray-50">+Ajouter un joueur</button>
+    <main class="flex overflow-x-scroll  " id="main" >
+        <aside class="bg-slate-700 w-1/3 h-90% min-w-90 border-r-1 border-gray-100 sticky left-0 mb-0">
+            <button class="ajouter cursor-pointer bg-green-700 w-85 m-2 mt-6 p-2 rounded-lg font-medium text-gray-50" id="Ajouter">+Ajouter un joueur</button>
             <div class="flex justify-between m-2 mt-7">
                 <p class="font-medium text-gray-50 ">Effectif</p>
                 
@@ -35,13 +35,13 @@
             </div >
             <p class="m-3 font-base text-slate-400 ">Cliquez sur un joueur placé pour voir sa case sur le terrain.<span class="text-orange-600"><i class="fa-solid fa-pen"></i></span>pour modifier,<span class="text-black"><i class="fa-solid fa-trash-can"></i></span>pour supprimer</p>
             <div class="m-2 border-1 p-2 border-l-4 border-orange-600 rounded-lg">
-                <p id="message-vide" class="pl-6 text-slate-400 font-normal">Aucun joueur pour le moment</p>
+                <p id="message-vide" class="pl-6 text-slate-400 font-normal" >Aucun joueur pour le moment</p>
                 <div id="liste-joueurs" class="overflow-y-auto max-h-70"></div>
             </div>
-            <div class="form  absolute top-40 left-90 bg-slate-700 w-96 rounded-lg h-95 p-6 hidden">
+            <div class="form  absolute top-40 left-90 bg-slate-700 w-96 rounded-lg h-95 p-6 hidden" id="containerAjouter">
                 <form  id="form-joueur">
                     <div class="flex justify-between">
-                        <p class="text-gray-100 font-medium ">Ajouter un joueur</p>
+                        <p class="text-gray-100 font-medium " >Ajouter un joueur</p>
                         <i class="fa-solid fa-x text-sm text-gray-400 cursor-pointer" id="btnX"></i>
                     </div>
                     <div class="mt-2 mb-4">
@@ -127,7 +127,8 @@
             </form>
             </div>
         </aside>
-        <section class="bg-slate-950 min-w-228 ">
+        <section class="bg-slate-950 min-w-220 h-90% mb-0 ">
+            
             <div class="terrain ">
                 <div class="position-joueur">
                     <div class="GB border-2 border-dashed border-orange-500 rounded-full bg-orange-500/30 flex"><span class="self-center">GB</span></div>
@@ -145,6 +146,7 @@
             </div>
             <p class="text-xs/8  ml-35 text-gray-500">Gardien à gauche --&#62 attaque à droite. Choisissez la position de chaque joueur dans la liste. Joueurs placés   <span id="nombre-terrain">   0</span>/11
             </p>
+            
         </section>
     </main>
 </body>
