@@ -15,7 +15,7 @@ annulerForm.addEventListener("click",()=>{
 const formJoueur=document.querySelector("#form-joueur");
 const nomJoueur=document.querySelector("#nom-joueur");
 const numeroJoueur=document.querySelector("#numero-joueur")
-const joueurs = [];
+let joueurs = JSON.parse(localStorage.getItem("joueurs")) || [];
 let idjoueur=joueurs.length;
 
 formJoueur.addEventListener("submit", (event) => {
@@ -81,6 +81,7 @@ formJoueur.addEventListener("submit", (event) => {
     };
     
     joueurs.push(nouveauJoueur);
+    localStorage.setItem("joueurs",JSON.stringify(joueurs));
     idjoueur++;
     console.log(joueurs);
     formJoueur.reset();
@@ -153,8 +154,10 @@ function afficherJoueurs() {
             joueurs.splice(index,1);
             carte.remove();
             console.log(joueurs.length)
+            localStorage.setItem("joueurs",JSON.stringify(joueurs));
             nombreJoueurs.textContent=joueurs.length;
             messageVide.classList.toggle("hidden",joueurs.length>0);
+
         })
         // select
         const listposition=document.createElement("select");
@@ -196,6 +199,7 @@ function afficherJoueurs() {
                 return;
             }
             joueur.position = nouvellePosition;
+            localStorage.setItem("joueurs",JSOM.stringify(joueurs));
 
             afficherTerrain();
             compterJoueursTerrain();
@@ -232,6 +236,7 @@ formModifier.addEventListener("submit", (e) => {
     joueurModifier.nom = nom;
     joueurModifier.numero = numero;
     joueurModifier.poste = poste.value.trim();
+    localStorage.setItem("joueurs",JSON.stringify(joueurs));
     containerModifier.classList.add("hidden");
     joueurModifier = null;
     afficherJoueurs();
@@ -265,10 +270,10 @@ function afficherTerrain(){
     });
 }
 
-afficherTerrain()
 const nombreTerrain=document.querySelector("#nombre-terrain");
 function compterJoueursTerrain(){
     const total=joueurs.filter(joueur=>joueur.position !== "banc" && joueur.position !=="").length;
     nombreTerrain.textContent=total;
 }
-
+afficherJoueurs()
+afficherTerrain()
