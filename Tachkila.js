@@ -8,6 +8,7 @@ afficherform.addEventListener("click",()=>{
 btnX.addEventListener("click",()=>{
     form.classList.add("hidden");
 })
+
 annulerForm.addEventListener("click",()=>{
     form.classList.add("hidden");
 })
@@ -137,7 +138,7 @@ function afficherJoueurs() {
             joueurModifier = joueur;
             nomModifier.value = joueur.nom;
             numeroModifier.value = joueur.numero;
-            document.querySelector(`input[name="poste"][value="${joueur.poste}"]`).checked = true;
+            formModifier.querySelector(`input[name="posteModifier"][value="${joueur.poste}"]`).checked = true;
             containerModifier.classList.remove("hidden");
         });
         btnAnnuler.addEventListener("click", () => {
@@ -215,12 +216,16 @@ function afficherJoueurs() {
     nombreJoueurs.textContent=joueurs.length;
     messageVide.classList.toggle("hidden",joueurs.length>0);
 }
+const btnX2=document.querySelector("#btnX2")
+btnX2.addEventListener("click",()=>{
+    containerModifier.classList.add("hidden");
+})
 formModifier.addEventListener("submit", (e) => {
     e.preventDefault();
     if (joueurModifier === null) return;
     const nom = nomModifier.value.trim();
     const numero = Number(numeroModifier.value);
-    const poste = document.querySelector('input[name="poste"]:checked');
+    const poste = formModifier.querySelector('input[name="posteModifier"]:checked');
     if (nom.length < 3 || !poste || numero < 1 || numero > 99) {
         console.log("jfido")
         alert("Veuillez vérifier les informations.");
